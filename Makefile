@@ -9,3 +9,5 @@ test: build
 		./run_tests.sh
 clean:
 		docker rmi shellmock-dev
+build-linux:
+		GOOS=linux GOARCH=amd64 go build

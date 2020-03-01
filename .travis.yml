@@ -1,10 +1,18 @@
 language: go
-
 services:
-  - docker
-
+- docker
 go:
-  - "1.13"
-
+- '1.13'
 script:
-  - make utest test
+- make utest
+- make test
+- make build-linux
+deploy:
+  provider: releases
+  api_key:
+    secure: d8f1hKrxlKeCGmvP2edoMntCvntGhbnr6MnJjDuna0r8oXxCeDiGFSWnTlogfsRVh8CPPjGB4K55ZNv9vlonFGE3Nq0u8wgpaYUGIVIP92dlCN5Soa4kdA5kgVPudpA7TxExYSzUklmdTDgj/Ml7qDlbkDdiSCVDJwlco2qRwT+Ee2f02C2R12DFR48DvEdGygWkdtx9KB3wBmkQmrfj1mPQkXZeRla6PMJzb9aRQUre08G15irB46gYPgmQNmthtVxlFAkRZa02CqqML7c2LrG+yxrobErAXRFZQo6AE7Rq5skG/RDncmopoGEeA571Js7UZao80yj3H8Hlakk5rkcbqicYJ+e19seCUJchBJ/jlMGybyp7V7nFBxr/Ebr7kJhtHs9kaknV003B2IbaL698yx7ty0ok3OhlLHZMtNmz0EtmwEpTNR8XtRLxISMkPdWDuSRQs8l//KswGkIgsdC2e9Bmk46veAevsUXcMnJQ2hmAbHwMuVxciKxace8acjR50WaxsHISkurnvZogkNdFKiuQJDZJQMGo4BIc6CLeqBIC9VlI0Hwr6cHZ/ozVBhmneOA4Mq21jJN8crU5t2Td8fFetQPgs7RFYUkE3w6vEs1Fm0mEeYOdjogKEvJwh+ypXWyFNHvdBTv3pCC1mYGj6oj8fCLSEeRtZ36eU4s=
+  file: shellmock
+  on:
+    repo: hwang381/shellmock
+    tags: false
+    branch: master
