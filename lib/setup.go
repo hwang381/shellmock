@@ -15,6 +15,10 @@ func Setup(executablePath string) error {
 	stateFilepath := getStateFilepath(executablePath)
 	if _, err := os.Stat(stateFilepath); err == nil {
 		fmt.Printf("removing old state file %s\n", stateFilepath)
+		err = os.Remove(stateFilepath)
+		if err != nil {
+			return err
+		}
 	} else if !os.IsNotExist(err) {
 		return err
 	}

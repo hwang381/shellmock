@@ -2,10 +2,16 @@ package lib
 
 import (
 	"fmt"
+	"os"
 )
 
 func Verify(executablePath string, expectedArgs []string) error {
 	stateFilepath := getStateFilepath(executablePath)
+
+	if _, err := os.Stat(stateFilepath); os.IsNotExist(err) {
+		return fmt.Errorf("%s has not been called", executablePath)
+	}
+
 	state, err := readState(stateFilepath)
 	if err != nil {
 		return err
@@ -29,7 +35,7 @@ func Verify(executablePath string, expectedArgs []string) error {
 	}
 	if len(expectedArgs) != len(actualArgs) {
 		return fmt.Errorf(
-			"%s, expected %v calls, got %v calls",
+			"%s, expected %v args, got %v args",
 			executablePath, len(expectedArgs), len(actualArgs),
 		)
 	}
@@ -49,6 +55,11 @@ func Verify(executablePath string, expectedArgs []string) error {
 
 func VerifyNoInteraction(executablePath string) error {
 	stateFilepath := getStateFilepath(executablePath)
+
+	if _, err := os.Stat(stateFilepath); os.IsNotExist(err) {
+		return nil
+	}
+
 	state, err := readState(stateFilepath)
 	if err != nil {
 		return err

@@ -9,6 +9,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "shellmock",
 	Short: "A shell mocking utility to easily create fake executables and assert on executable calls",
+	SilenceUsage: true,
 }
 
 func init() {
