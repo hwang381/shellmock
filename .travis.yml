@@ -1,0 +1,10 @@
+language: go
+
+services:
+  - docker
+
+go:
+  - "1.13"
+
+script:
+  - make utest test

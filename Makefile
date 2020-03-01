@@ -1,9 +1,9 @@
-all: build run
+all: build
 utest:
 		go test ./...
 build:
 		docker build -t shellmock-dev .
-run:
+run: build
 		docker run -it shellmock-dev /bin/bash
 test: build
 		./run_tests.sh
