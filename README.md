@@ -1,4 +1,4 @@
-# shellmock
+# shellmock [![Build Status](https://travis-ci.org/hwang381/shellmock.svg?branch=master)](https://travis-ci.org/hwang381/shellmock)
 A shell mocking utility to easily create fake executables and assert on executable calls
 
 **Please only run this in a virtualized testing environment because it could replace arbitrary executables**
