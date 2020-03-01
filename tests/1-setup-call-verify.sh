@@ -46,4 +46,4 @@ shellmock verify ${MOCKED_EXE} || echo "expected error. i am fine"
 
 echo "> testing no call and verifyNoInteraction"
 shellmock setup ${MOCKED_EXE}
-shellmock verifyNoInteraction ${MOCKED_EXE} || echo "expected error. i am fine"
+shellmock verifyNoInteraction ${MOCKED_EXE}
